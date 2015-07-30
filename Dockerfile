@@ -35,7 +35,8 @@ RUN ln -sf /dev/stdout /usr/local/nginx/logs/access.log
 RUN ln -sf /dev/stderr /usr/local/nginx/logs/error.log
 
 #Add /ngx_pagespeed_cache
-RUN mkdir /ngx_pagespeed_cache && chmod -R 777 /ngx_pagespeed_cache
+RUN mkdir /ngx_pagespeed_cache && chmod -R 777 /ngx_pagespeed_cache \
+    && mkdir /www && chmod -R 777 /www
 
 EXPOSE 80 443
 #ENTRYPOINT ["/usr/local/nginx/sbin/nginx","-g","daemon off;"]
