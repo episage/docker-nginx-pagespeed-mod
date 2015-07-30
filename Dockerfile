@@ -3,7 +3,7 @@ MAINTAINER Tanmai Gopal <tanmaig@34cross.in>
 
 ENV NPS_VERSION 1.9.32.6
 ENV NGINX_VERSION 1.9.3
-ENV OPENSSL_VERSION 1.0.2a
+ENV OPENSSL_VERSION 1.0.2d
 ENV BUILDDIR /b
 
 #Install the basic stuff
@@ -20,7 +20,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
     && tar -xvzf nginx-${NGINX_VERSION}.tar.gz \
     && cd ${BUILDDIR} \
-    && wget http://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz \
+    && wget ftp://ftp.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz \
     && tar -xvzf openssl-${OPENSSL_VERSION}.tar.gz \
     && cd ${BUILDDIR}/nginx-${NGINX_VERSION} \
     && ./configure --add-module=${BUILDDIR}/ngx_pagespeed-release-${NPS_VERSION}-beta/ --with-openssl=${BUILDDIR}/openssl-${OPENSSL_VERSION} --with-http_ssl_module --with-http_realip_module \
