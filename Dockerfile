@@ -1,5 +1,5 @@
 FROM ubuntu:14.04.1
-MAINTAINER Tanmai Gopal <tanmaig@34cross.in>
+MAINTAINER Tomasz Ciborski
 
 ENV NPS_VERSION 1.9.32.6
 ENV NGINX_VERSION 1.9.3
@@ -35,10 +35,9 @@ RUN ln -sf /dev/stdout /usr/local/nginx/logs/access.log
 RUN ln -sf /dev/stderr /usr/local/nginx/logs/error.log
 
 #Add /ngx_pagespeed_cache
-RUN mkdir /ngx_pagespeed_cache && chmod -R 777 /ngx_pagespeed_cache \
-    && mkdir /www && chmod -R 777 /www
+RUN mkdir /ngx_pagespeed_cache && chmod -R 777 /ngx_pagespeed_cache
+
 
 EXPOSE 80 443
-#ENTRYPOINT ["/usr/local/nginx/sbin/nginx","-g","daemon off;"]
 CMD ["/usr/local/nginx/sbin/nginx", "-g", "daemon off;"]
 
